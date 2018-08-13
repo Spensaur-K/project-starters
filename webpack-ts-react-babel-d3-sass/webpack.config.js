@@ -23,6 +23,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss"],
   },
+  mode: "development",
   module: {
     rules: [
       {
