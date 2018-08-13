@@ -32,11 +32,16 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ['env', 'react']
+              presets: ['env', 'react'],
             },
           },
           "ts-loader",
-          "tslint-loader",
+          {
+            loader: "tslint-loader",
+            options: {
+              configFile: path.join(__dirname, "./tslint.json"),
+            },
+          },
         ]
       },
       {
