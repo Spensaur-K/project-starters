@@ -18,7 +18,7 @@ module.exports = {
   entry: ["babel-polyfill", path.join(srcPath, "index.tsx")],
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss"],
@@ -32,7 +32,7 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ['env', 'react'],
+              presets: ["env", "react"],
             },
           },
           "ts-loader",
@@ -42,7 +42,7 @@ module.exports = {
               configFile: path.join(__dirname, "./tslint.json"),
             },
           },
-        ]
+        ],
       },
       {
         test: /\.js[x]?$/,
@@ -51,25 +51,25 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ["env", "react"]
-            }
-          }
-        ]
+              presets: ["env", "react"],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract("css-loader")
+        use: ExtractTextPlugin.extract("css-loader"),
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract("css-loader!sass-loader"),
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.hbs",
-      title: PACKAGE.name
+      title: PACKAGE.name,
     }),
     new webpack.ProvidePlugin({
       React: "react",
