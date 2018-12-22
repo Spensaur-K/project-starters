@@ -29,9 +29,15 @@
     "tslint": "^5.11.0",
     "tslint-loader": "^3.6.0",
     "typescript": "^3.0.1",
-    "webpack": "^4.16.5"
+    "webpack": "^4.16.5",
+    "@storybook/react": "^4.1.3",
+    "@storybook/addon-actions": "^4.1.3",
+    "@storybook/addon-links": "^4.1.3",
+    "@storybook/addons": "^4.1.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }
