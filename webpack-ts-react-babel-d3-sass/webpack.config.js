@@ -8,14 +8,14 @@ const path = require("path");
 
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const PACKAGE = require("./package.json");
 
 const srcPath = path.join(__dirname, "src");
 
 module.exports = {
-  entry: ["babel-polyfill", path.join(srcPath, "index.tsx")],
+  entry: ["@babel/polyfill", path.join(srcPath, "index.tsx")],
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js",
@@ -32,7 +32,7 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ["env", "react"],
+              presets: ["@babel/env", "@babel/react"],
             },
           },
           "ts-loader",
@@ -51,18 +51,18 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ["env", "react"],
+              presets: ["@babel/env", "@babel/react"],
             },
           },
         ],
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract("css-loader"),
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract("css-loader!sass-loader"),
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
@@ -74,6 +74,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: "react",
     }),
-    new ExtractTextPlugin("[name].css"),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
   ],
 };

@@ -15,10 +15,11 @@
         "jsx": "preserve",
         "checkJs": true,
         "alwaysStrict": true,
-        "strictFunctionTypes": true
+        "strictFunctionTypes": true,
+        "resolveJsonModule": true
     },
     "files": [
-	    "src/index.tsx"
+        "src/index.tsx"
     ],
     "include": []
 }
